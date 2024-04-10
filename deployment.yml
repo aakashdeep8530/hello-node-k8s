@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nodejs-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-nodejs-app
+  template:
+    metadata:
+      labels:
+        app: my-nodejs-app
+    spec:
+      containers:
+      - name: my-nodejs-container
+        image: aakashdeep8530/nodejs_app:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi" 
+          limits:
+            cpu: "200m" 
+            memory: "256Mi" 
+
